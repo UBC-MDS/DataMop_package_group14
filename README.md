@@ -2,6 +2,10 @@
 
 A package containing tools for robust data cleaning.
 
+## Contributors
+
+The authors of this project are Sepehr Heydarian, Ximin Xu, and Essie Zhang.
+
 ## Installation
 
 ```bash
