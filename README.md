@@ -1,14 +1,20 @@
 # datamop
 
 `datamop` is a data cleaning and wrangling package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numberic columns when dealing with data, `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
-`datamop` provides three core functions:
+`datamop` provides these core functions:
 
-1. `sweep_nulls()`: Handle missing values such as imputation or removal, based on user preference.
+* `sweep_nulls()`: Handle missing values such as imputation or removal, based on user preference.
 
-2. `column_encoder()`: Encodes categorical columns using either one-hot encoding or ordinal encoding, based on user preference.
+* `column_encoder()`: Encodes categorical columns using either one-hot encoding or ordinal encoding, based on user preference.
 
-3. `column_scaler()`: Normalizes numerical columns, including Min-Max scaling and Z-score standardization, based on user preference.
+* `column_scaler()`: Normalizes numerical columns, including Min-Max scaling and Z-score standardization, based on user preference.
 
+`datamop` fits into Python data preprocessing ecosystem by offering a more lightweight and user-friendly alternative to complex libraries like `pandas`, `scikit-learn`. `datamop` focuses specifically on handling missing values, encoding categorical columns and normalizing numerical columns. `datamop` change `scikit-learn` tasks performed by modules like `SimpleImputer`, `OneHotEncoder`, `OrdinalEncoder` and `StandardScaler` with fewer steps and easier customization.
+Similar functionality can be found in:
+
+* **pandas** (`fillna()`, etc.): [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)
+
+* **scikit-learn** (`SimpleImputer`, `OneHotEncoder`, `LabelEncoder`, `MinMaxScaler`, etc.): [scikit-learn preprocessing](https://scikit-learn.org/stable/modules/preprocessing.html)
 
 ## Contributors
 
