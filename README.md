@@ -14,7 +14,21 @@ $ pip install datamop
 
 ## Usage
 
-- TODO
+`datamop` can be used to encode categorical columns in a DataFrame using one-hot or ordinal encoding as follows:
+
+```
+import pandas as pd
+from datamop.column_encoder import column_encoder
+
+df = pd.DataFrame({
+    'Sport': ['Tennis', 'Basketball', 'Football', 'Badminton'],
+    'Level': ['A', 'B', 'C', 'D']
+})
+
+encoded_df_onehot = column_encoder(df, columns=['Sport'], method='one-hot')
+encoded_df_ordinal = column_encoder(encoded_df_onehot, columns=['Level'], method='ordinal')
+
+```
 
 ## Contributing
 
