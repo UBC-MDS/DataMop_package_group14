@@ -1,6 +1,14 @@
 # datamop
 
-A package containing tools for robust data cleaning.
+`datamop` is a data cleaning and wrangling package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numberic columns when dealing with data, `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
+`datamop` provides three core functions:
+
+1. `sweep_nulls()`: Handle missing values such as imputation or removal, based on user preference.
+
+2. `column_encoder()`: Encodes categorical columns using either one-hot encoding or ordinal encoding, based on user preference.
+
+3. `column_scaler()`: Normalizes numerical columns, including Min-Max scaling and Z-score standardization, based on user preference.
+
 
 ## Contributors
 
