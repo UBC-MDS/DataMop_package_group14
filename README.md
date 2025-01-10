@@ -1,13 +1,13 @@
 # datamop
 
-`datamop` is a data cleaning and wrangling package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numeric columns when dealing with data, `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
-`datamop` provides these core functions:
+`datamop` is a data cleaning and wrangling package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numeric columns when dealing with data. `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
+The following are core functions of this package:
 
 * `sweep_nulls()`: Handle missing values such as imputation or removal, based on user preference.
 
 * `column_encoder()`: Encodes categorical columns using either one-hot encoding or ordinal encoding, based on user preference.
 
-* `column_scaler()`: Normalizes numerical columns, including Min-Max scaling and Z-score standardization, based on user preference.
+* `column_scaler()`: Scales numerical columns, including Min-Max scaling and Z-score standardization, based on user preference.
 
 `datamop` fits into Python data preprocessing ecosystem by offering a more lightweight and user-friendly alternative to complex libraries like `pandas`, `scikit-learn`. `datamop` focuses specifically on handling missing values, encoding categorical columns and normalizing numerical columns. `datamop` changes `scikit-learn` tasks performed by modules like `SimpleImputer`, `OneHotEncoder`, `OrdinalEncoder` and `StandardScaler` with fewer steps and easier customization.
 Similar functionality can be found in:
