@@ -7,7 +7,7 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1):
     data : pandas.DataFrame
         The DataFrame containing the column of interest for scaling.
     column: str
-        The name of the numeric column to scale
+        The name of the numeric column to scale.
     method: str
         The method used for scaling. Options include:
             - 'minmax': Scales values between 'new_min' and 'new_max', used as default method.
@@ -27,7 +27,7 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1):
     ValueError:
         If the column passed for scaling is not numeric.
     KeyError:
-        If the column passed  for scaling does not exist in the DataFrame
+        If the column passed for scaling does not exist in the DataFrame.
 
     Examples
     --------
