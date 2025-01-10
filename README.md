@@ -9,7 +9,7 @@
 
 * `column_scaler()`: Normalizes numerical columns, including Min-Max scaling and Z-score standardization, based on user preference.
 
-`datamop` fits into Python data preprocessing ecosystem by offering a more lightweight and user-friendly alternative to complex libraries like `pandas`, `scikit-learn`. `datamop` focuses specifically on handling missing values, encoding categorical columns and normalizing numerical columns. `datamop` change `scikit-learn` tasks performed by modules like `SimpleImputer`, `OneHotEncoder`, `OrdinalEncoder` and `StandardScaler` with fewer steps and easier customization.
+`datamop` fits into Python data preprocessing ecosystem by offering a more lightweight and user-friendly alternative to complex libraries like `pandas`, `scikit-learn`. `datamop` focuses specifically on handling missing values, encoding categorical columns and normalizing numerical columns. `datamop` changes `scikit-learn` tasks performed by modules like `SimpleImputer`, `OneHotEncoder`, `OrdinalEncoder` and `StandardScaler` with fewer steps and easier customization.
 Similar functionality can be found in:
 
 * **pandas** (`fillna()`, etc.): [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)
