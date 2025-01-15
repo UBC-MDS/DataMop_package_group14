@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+import warnings
+
 def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
     """
     Handles missing values in a dataset using the specified strategy.
@@ -41,3 +45,48 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
         2  30.0  2.0     z
     
     """
+
+    # handle all missings if column not specified
+    if columns is None:
+        columns = data.columns
+
+    if strategy not in ['mean', 'median', 'mode', 'constant', 'drop']:
+        raise ValueError("Unsupported strategy. Choose from 'mean', 'median', 'mode', 'constant', or 'drop'")
+    
+    # `fill_value` is required for the 'constant' strategy
+    if strategy == 'constant' and fill_value is None:
+        raise ValueError("`fill_value` must be provided for 'constant' strategy.")
+    
+    # Loop through each column in the dataframe
+    for column in columns:
+        original_dtype = data[column].dtype
+        if original_dtype in ['int64', 'float64']: 
+            if strategy == 'mean':
+                data[column] = data[column].fillna(data[column].mean())
+            elif strategy == 'median':
+                data[column] = data[column].fillna(data[column].median())
+            elif strategy == 'mode':
+                data[column] = data[column].fillna(data[column].mode()[0])
+            elif strategy == 'constant':
+                data[column] = data[column].fillna(fill_value)
+            elif strategy == 'drop':
+                data = data.dropna(subset=[column])
+
+            data[column] = data[column].astype(original_dtype)
+
+        else: 
+            if strategy in ['mean', 'median']:
+                warnings.warn(f"Strategy '{strategy}' cannot be applied to non-numeric column '{column}'", UserWarning)
+            if strategy == 'mode':
+                data[column] = data[column].fillna(data[column].mode()[0])
+            elif strategy == 'constant':
+                data[column] = data[column].fillna(fill_value)
+            elif strategy == 'drop':
+                data = data.dropna(subset=[column])
+    
+    # Drop columns with only missing values
+    if strategy == 'drop':
+        data = data.dropna(axis=1, how='all')
+    
+    return data
+
