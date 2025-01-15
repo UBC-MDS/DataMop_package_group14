@@ -49,24 +49,53 @@ def column_encoder(df, columns, method='one-hot', order=None):
         Badminton      3
 
     """
-    encoded_df = df
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Input must be a pandas DataFrame")
+    if not isinstance(columns, list) or not all(isinstance(col, str) for col in columns):
+        raise TypeError("Columns parameter must be a list of strings")
+    if not isinstance(method, str):
+        raise TypeError("Method parameter must be a string")
+    if method == 'ordinal' and order is not None and not isinstance(order, dict):
+        raise TypeError("Order parameter must be a dictionary")
+    encoded_df = df.copy()
+    
     if method == 'one-hot':
+        if order is not None:
+            raise ValueError("You must provide an 'order' parameter for ordinal encoding.")
+        
         for column in columns:
+            if column not in encoded_df.columns:
+                raise KeyError(f"The column '{column}' is not in the dataframe")
             dummies = pd.get_dummies(encoded_df[column], prefix=column)
             encoded_df = pd.concat([encoded_df.drop(column, axis=1), dummies], axis=1)
+            
     elif method == 'ordinal':
         if order is None:
             raise ValueError("You must provide an 'order' parameter for ordinal encoding.")
         
         for column in columns:
+            if column not in encoded_df.columns:
+                raise KeyError(f"The column '{column}' is not in the dataframe")
             if column not in order:
-                raise ValueError(f"Order for column '{column}' is not provided.")
+                raise ValueError(f"Order for column '{column}' is not provided")
             
             custom_order = order[column]
-            if not set(encoded_df[column].unique()).issubset(set(custom_order)):
-                raise ValueError(f"Order for column '{column}' does not match its unique values.")
+            unique_values = encoded_df[column].unique()
+            
+            if not set(unique_values).issubset(set(custom_order)):
+                raise ValueError(f"Order for column '{column}' does not match its unique values")
+            
+            if len(unique_values) == 1:
+                import warnings
+                warnings.warn(f"The column '{column}' contains only one unique value", UserWarning)
             
             val_to_int = {val: idx for idx, val in enumerate(custom_order)}
             encoded_df[column] = encoded_df[column].map(val_to_int)
+    else:
+        raise ValueError("Invalid method specified. Use 'one-hot' or 'ordinal'")
+    
+    if encoded_df.isnull().any().any():
+        import warnings
+        warnings.warn("Missing values detected. They will be left as null", UserWarning)
             
     return encoded_df
