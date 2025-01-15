@@ -152,11 +152,9 @@ def test_case_12_missing_required_parameter():
         'Sport': ['Tennis', 'Basketball', 'Football', 'Badminton']
     })
 
-    # Check for missing columns parameter
     with pytest.raises(TypeError, match="Columns parameter must be a list of strings"):
         column_encoder(df, columns=None, method='one-hot')
 
-    # Check for missing method parameter
     with pytest.raises(TypeError, match="Method parameter must be a string"):
         column_encoder(df, columns=['Sport'], method=None)
 
