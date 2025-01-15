@@ -24,6 +24,18 @@ def column_encoder(df, columns, method='one-hot', order=None):
     pd.DataFrame
         A new DataFrame with the specified column encoded. The original column 
         will be dropped.
+    
+    Raises:
+    -------
+    TypeError:
+        If input types are incorrect (e.g., non-DataFrame input, columns not a list of strings,
+        method not a string, or order not a dictionary).
+    ValueError:
+        If required parameters are missing or invalid values are provided.
+    KeyError:
+        If specified columns are not found in the input DataFrame.
+    UserWarning:
+        If a column contains only one unique value or if there are missing values.
 
     Examples:
     ---------
