@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def column_encoder(df, columns, method='one-hot', order=None):
     """
     Encodes categorical columns using one-hot or ordinal encoding based on user input.
@@ -61,7 +62,7 @@ def column_encoder(df, columns, method='one-hot', order=None):
     
     if method == 'one-hot':
         if order is not None:
-            raise ValueError("You must provide an 'order' parameter for ordinal encoding.")
+            raise ValueError("Order parameter is not applicable for method 'one-hot'")
         
         for column in columns:
             if column not in encoded_df.columns:
@@ -71,13 +72,18 @@ def column_encoder(df, columns, method='one-hot', order=None):
             
     elif method == 'ordinal':
         if order is None:
-            raise ValueError("You must provide an 'order' parameter for ordinal encoding.")
+            raise ValueError("Order must be specified for ordinal encoding")
         
         for column in columns:
             if column not in encoded_df.columns:
                 raise KeyError(f"The column '{column}' is not in the dataframe")
             if column not in order:
                 raise ValueError(f"Order for column '{column}' is not provided")
+            
+        for column in order:
+            if column not in columns:
+                raise ValueError(f"The column '{column}' specified in order is not in the column list")
+
             
             custom_order = order[column]
             unique_values = encoded_df[column].unique()
