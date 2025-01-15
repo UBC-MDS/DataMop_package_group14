@@ -1,4 +1,4 @@
-def column_scaler(data, column, method="minmax", new_min=0, new_max=1):
+def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=True):
     """
     Scales the values of a specified column in a DataFrame.
 
@@ -16,6 +16,10 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1):
         The lower boundary value for min-max scaling. Default value is 0.
     new_max: float
         The upper boundary value for min-max scaling. Default value is 1. 
+    inplace: bool
+        When equals 'True', the function replaces the original column with the scaled values,
+        when equals 'False', the function adds the new scaled column to the DataFrame,
+        Default is 'True'
     
     Returns
     --------
