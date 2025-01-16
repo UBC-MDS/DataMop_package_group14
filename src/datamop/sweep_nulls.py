@@ -46,10 +46,16 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
     
     """
 
-    # handle all missings if column not specified
-    if columns is None:
+    # Ensure the input data is a pandas DataFrame
+    if not isinstance(data, pd.DataFrame):
+        raise ValueError("Input data must be a pandas DataFrame")
+    
+    # If no columns are specified (default or empty list), apply strategy to all columns
+    if not columns:
+        warnings.warn("Columns list is empty. Applying strategy to all columns.", UserWarning)
         columns = data.columns
 
+    # Check if the provided strategy is valid
     if strategy not in ['mean', 'median', 'mode', 'constant', 'drop']:
         raise ValueError("Unsupported strategy. Choose from 'mean', 'median', 'mode', 'constant', or 'drop'")
     
@@ -57,10 +63,24 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
     if strategy == 'constant' and fill_value is None:
         raise ValueError("`fill_value` must be provided for 'constant' strategy.")
     
-    # Loop through each column in the dataframe
+    # Store the original data types
+    original_dtypes = data.dtypes.to_dict()
+
+    # Loop through each column and handle missings
     for column in columns:
-        original_dtype = data[column].dtype
-        if original_dtype in ['int64', 'float64']: 
+
+        # Raise error if the column is not found in the DataFrame
+        if column not in data.columns:
+            raise KeyError(f"Column '{column}' not found in the DataFrame.")
+        
+        # Drop column if the entire is missing
+        if data[column].isna().all(): 
+            warnings.warn(f"Column '{column}' contains only missing values. Dropping the column.", UserWarning)
+            data = data.drop(columns=[column])
+            continue
+
+        # Numeric columns
+        if data[column].dtype in ['int64', 'float64']: 
             if strategy == 'mean':
                 data[column] = data[column].fillna(data[column].mean())
             elif strategy == 'median':
@@ -68,25 +88,30 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
             elif strategy == 'mode':
                 data[column] = data[column].fillna(data[column].mode()[0])
             elif strategy == 'constant':
+                if not isinstance(fill_value, (int, float)):
+                    raise TypeError("Invalid `fill_value` type.")
                 data[column] = data[column].fillna(fill_value)
             elif strategy == 'drop':
                 data = data.dropna(subset=[column])
 
-            data[column] = data[column].astype(original_dtype)
-
+        # Non-numeric columns
         else: 
             if strategy in ['mean', 'median']:
                 warnings.warn(f"Strategy '{strategy}' cannot be applied to non-numeric column '{column}'", UserWarning)
+                data[column] = data[column]        
             if strategy == 'mode':
                 data[column] = data[column].fillna(data[column].mode()[0])
             elif strategy == 'constant':
+                if not isinstance(fill_value, (int, float, str)):
+                    raise TypeError("Invalid `fill_value` type.")
                 data[column] = data[column].fillna(fill_value)
             elif strategy == 'drop':
                 data = data.dropna(subset=[column])
-    
-    # Drop columns with only missing values
-    if strategy == 'drop':
-        data = data.dropna(axis=1, how='all')
+
+    # Restore the original data types
+    remaining_columns = data.columns
+    for column in remaining_columns:
+        if column in original_dtypes:
+            data[column] = data[column].astype(original_dtypes[column])
     
     return data
-
