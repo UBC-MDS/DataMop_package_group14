@@ -11,7 +11,7 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
     data : pandas.DataFrame
         The input dataset where missing values need to be handled.
 
-    strategy : str, optional, default='mean'
+    strategy : {'mean', 'median', 'mode', 'constant', 'drop'}, optional, default='mean'
         The strategy to use for handling missing values. Supported options are:
         - 'mean': For numeric columns only. Replace missing values with the mean of the respective column.
         - 'median': For numeric columns only. Replace missing values with the median of the respective column.
