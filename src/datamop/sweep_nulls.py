@@ -13,22 +13,35 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
 
     strategy : str, optional, default='mean'
         The strategy to use for handling missing values. Supported options are:
-        - 'mean': Replace missing values with the mean of the respective column.
-        - 'median': Replace missing values with the median of the respective column.
+        - 'mean': For numeric columns only. Replace missing values with the mean of the respective column.
+        - 'median': For numeric columns only. Replace missing values with the median of the respective column.
         - 'mode': Replace missing values with the mode (most frequent value) of the respective column.
         - 'constant': Replace missing values with a specified constant value (requires `fill_value`).
         - 'drop': Drop rows or columns containing missing values (depending on the `columns` parameter).
 
     columns : list of str or None, optional, default=None
-        The specific columns to apply the missing value handling. If None, the strategy is applied to all columns.
+        The specific columns to apply the missing value handling. 
+        If None or an empty list, the strategy is applied to all columns.
 
-    fill_value : str/numeric, optional, default=None
+    fill_value : int, float, str, or None, optional, default=None
         The constant value to use when `strategy='constant'`. Ignored for other strategies.
 
     Returns
     -------
     pandas.DataFrame
         A new DataFrame with missing values handled based on the specified strategy.
+
+    Raises
+    ------
+    ValueError
+        - If the input data is not a pandas.DataFrame.
+        - If the input strategy is not in 'mean', 'median', 'mode', 'constant', or 'drop'.
+        - If `fill_value` is missing for the 'constant' strategy.
+    KeyError
+        If any specified column in `columns` does not exist in the pandas.DataFrame.
+    TypeError
+        If the input of `fill_value` is not a number or a string.
+
 
     Examples
     --------
