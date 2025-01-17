@@ -125,6 +125,9 @@ def sweep_nulls(data, strategy='mean', columns=None, fill_value=None):
     remaining_columns = data.columns
     for column in remaining_columns:
         if column in original_dtypes:
-            data[column] = data[column].astype(original_dtypes[column])
+            try:
+                data[column] = data[column].astype(original_dtypes[column]) 
+            except ValueError: 
+                warnings.warn("Could not restore the original dtype for column '{column}'. Data type changes to {data[column].dtype}.", UserWarning)
     
     return data
