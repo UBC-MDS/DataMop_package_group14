@@ -240,6 +240,7 @@ def test_unsupported_data_type():
     """
     with pytest.raises(ValueError, match="Input data must be a pandas DataFrame"):
         datamop.sweep_nulls("not a dataframe", strategy='mean')
+    with pytest.raises(ValueError, match="Input data must be a pandas DataFrame"):
         datamop.sweep_nulls(pd.Series([1, 2, np.nan]), strategy='mean')
 
 # Error Case 2: Invalid strategy
