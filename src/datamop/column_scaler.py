@@ -38,10 +38,15 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
 
     Raises
     ------
-    ValueError:
-        If the column passed for scaling is not numeric.
+    TypeError
+        If the input `data` is not a pandas DataFrame.
     KeyError:
         If the column passed for scaling does not exist in the DataFrame.
+    ValueError:
+        If the column passed for scaling is not numeric.
+        If the `method` is not `minmax` or `standard`.
+        If the `new_min` value is greater or equal to the `new_max` when using `minmax` method.
+    
 
     Examples
     --------
