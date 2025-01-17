@@ -225,7 +225,13 @@ def test_non_numeric_with_numeric_strategy(sample_data):
     A warning is raised and no changes are made to the column.
     """
     with pytest.warns(UserWarning, match="Strategy 'mean' cannot be applied to non-numeric column 'c'"):
-        sweep_nulls(sample_data, strategy='mean', columns=['c'])
+        result = sweep_nulls(sample_data, strategy='mean', columns=['c'])
+        expected = pd.DataFrame({
+            'a': [10, np.nan, 30],
+            'b': [1.5, 2.5, np.nan],
+            'c': ['x', np.nan, 'z']
+            })
+        assert result.equals(expected)
 
 # ** Error Cases **
 
