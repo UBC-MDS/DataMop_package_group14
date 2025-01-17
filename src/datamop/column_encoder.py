@@ -62,6 +62,7 @@ def column_encoder(df, columns, method='one-hot', order=None):
         Badminton      3
 
     """
+    #check input type
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Input must be a pandas DataFrame")
     if not isinstance(columns, list) or not all(isinstance(col, str) for col in columns):
@@ -73,33 +74,39 @@ def column_encoder(df, columns, method='one-hot', order=None):
     encoded_df = df.copy()
     
     if method == 'one-hot':
+        #check if order is input
         if order is not None:
             raise ValueError("Order parameter is not applicable for method 'one-hot'")
         
         for column in columns:
+            #check if column is in dataframe
             if column not in encoded_df.columns:
                 raise KeyError(f"The column '{column}' is not in the dataframe")
             dummies = pd.get_dummies(encoded_df[column], prefix=column)
             encoded_df = pd.concat([encoded_df.drop(column, axis=1), dummies], axis=1)
             
     elif method == 'ordinal':
+        #check if order is input
         if order is None:
             raise ValueError("Order must be specified for ordinal encoding")
         
         for column in columns:
+            #check if column is in dataframe
             if column not in encoded_df.columns:
                 raise KeyError(f"The column '{column}' is not in the dataframe")
+            #check if order is in the input column
             if column not in order:
                 raise ValueError(f"Order for column '{column}' is not provided")
             
         for column in order:
+            #check if column is in the order
             if column not in columns:
                 raise ValueError(f"The column '{column}' specified in order is not in the column list")
 
             
             custom_order = order[column]
             unique_values = encoded_df[column].unique()
-            
+            #check if order match what is inside column
             if not set(unique_values).issubset(set(custom_order)):
                 raise ValueError(f"Order for column '{column}' does not match its unique values")
             
