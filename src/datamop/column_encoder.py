@@ -9,8 +9,8 @@ def column_encoder(df, columns, method='one-hot', order=None):
     -----------
     df : pandas.DataFrame
         The input DataFrame containing the dataset.
-    column : str
-        The name of the column to be encoded. This column must be categorical.
+    columns : list
+        The name of the columns to be encoded. 
     method : str, optional, default='one-hot'
         The encoding method to use. Accepts either 'one-hot' for one-hot encoding
         or 'ordinal' for ordinal encoding.
