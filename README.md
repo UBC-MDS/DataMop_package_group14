@@ -28,7 +28,41 @@ $ pip install datamop
 
 ## Usage
 
-- TODO
+`datamop` can be used to encode columns in a DataFrame using one-hot or ordinal encoding as follows:
+
+```
+import pandas as pd
+import datamop
+
+df = pd.DataFrame({
+    'Sport': ['Tennis', 'Basketball', 'Football', 'Badminton'],
+    'Level': ['A', 'B', 'C', 'D']
+})
+
+import datamop
+encoded_df_onehot = datamop.column_encoder(df, columns=['Sport'], method='one-hot')
+encoded_df_ordinal = datamop.column_encoder(df, columns=['Level'], method='ordinal', order={'Level': ['A', 'B', 'C', 'D']})
+
+```
+
+This package can also be used to handle missing values such as imputation or removal, based on user preference as following:
+
+```
+import numpy as np
+df = pd.DataFrame({
+    'a': [10, np.nan, 30],
+    'b': [1.5, 2.5, np.nan],
+    'c': ['x', np.nan, 'z']
+    })
+cleaned = datamop.sweep_nulls(df, strategy='mean')
+```
+
+Additionally, this package can be used to scale numerical columns as following:
+
+```
+df = pd.DataFrame({"price": [25, 50, 75]})
+df_scaled = datamop.column_scaler(df, column = 'price', method='minmax', new_min=0, new_max=1)
+```
 
 ## Contributing
 
