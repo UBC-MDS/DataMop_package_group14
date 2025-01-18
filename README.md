@@ -39,7 +39,6 @@ df = pd.DataFrame({
     'Level': ['A', 'B', 'C', 'D']
 })
 
-import datamop
 encoded_df_onehot = datamop.column_encoder(df, columns=['Sport'], method='one-hot')
 encoded_df_ordinal = datamop.column_encoder(df, columns=['Level'], method='ordinal', order={'Level': ['A', 'B', 'C', 'D']})
 
