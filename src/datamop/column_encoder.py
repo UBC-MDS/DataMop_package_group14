@@ -82,7 +82,7 @@ def column_encoder(df, columns, method='one-hot', order=None):
             #check if column is in dataframe
             if column not in encoded_df.columns:
                 raise KeyError(f"The column '{column}' is not in the dataframe")
-            dummies = pd.get_dummies(encoded_df[column], prefix=column)
+            dummies = pd.get_dummies(encoded_df[column], prefix=column).astype(int)
             encoded_df = pd.concat([encoded_df.drop(column, axis=1), dummies], axis=1)
             
     elif method == 'ordinal':
