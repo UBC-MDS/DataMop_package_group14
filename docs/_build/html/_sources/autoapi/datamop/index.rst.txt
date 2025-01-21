@@ -1,0 +1,192 @@
+datamop
+=======
+
+.. py:module:: datamop
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/datamop/column_encoder/index
+   /autoapi/datamop/column_scaler/index
+   /autoapi/datamop/sweep_nulls/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   datamop.__version__
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   datamop.column_encoder
+   datamop.column_scaler
+   datamop.sweep_nulls
+
+
+Package Contents
+----------------
+
+.. py:data:: __version__
+
+.. py:function:: column_encoder(df, columns, method='one-hot', order=None)
+
+   Encodes categorical columns using one-hot or ordinal encoding based on user input.
+
+   Parameters:
+   -----------
+   df : pandas.DataFrame
+       The input DataFrame containing the dataset.
+   columns : list
+       The name of the columns to be encoded.
+   method : str, optional, default='one-hot'
+       The encoding method to use. Accepts either 'one-hot' for one-hot encoding
+       or 'ordinal' for ordinal encoding.
+   order : dict, optional, default=None
+       A dictionary specifying the custom order for ordinal encoding.
+       The keys should be column names, and the values should be lists
+       defining the order of categories for each column.
+
+   Returns:
+   --------
+   pd.DataFrame
+       A new DataFrame with the specified column encoded. The original column
+       will be dropped.
+
+   Raises:
+   -------
+   TypeError:
+       If input types are incorrect (e.g., non-DataFrame input, columns not a list of strings,
+       method not a string, or order not a dictionary).
+   ValueError:
+       If required parameters are missing or invalid values are provided.
+   KeyError:
+       If specified columns are not found in the input DataFrame.
+   UserWarning:
+       If a column contains only one unique value or if there are missing values.
+
+   Examples:
+   ---------
+   >>> import pandas as pd
+   >>> df = pd.DataFrame({
+   ...     'Sport': ['Tennis', 'Basketball', 'Football', 'Badminton'],
+   ...     'Level': ['A', 'B', 'C', 'D']
+   ... })
+
+   >>> encoded_df_onehot = column_encoder(df, columns=['Sport'], method='one-hot')
+   >>> print(encoded_df_onehot)
+     Level  Sport_Badminton  Sport_Basketball  Sport_Football  Sport_Tennis
+        A                0                 0               0             1
+        B                0                 1               0             0
+        C                0                 0               1             0
+        D                1                 0               0             0
+
+   >>> encoded_df_ordinal = column_encoder(df, columns=['Level'], method='ordinal', order={'Level': ['A', 'B', 'C', 'D']})
+   >>> print(encoded_df_ordinal)
+           Sport  Level
+          Tennis      0
+       Basketball     1
+        Football      2
+       Badminton      3
+
+
+
+.. py:function:: column_scaler(data, column, method='minmax', new_min=0, new_max=1, inplace=True)
+
+   Scales the values of a specified column in a DataFrame.
+
+   :param data: The DataFrame containing the column of interest for scaling.
+   :type data: pandas.DataFrame
+   :param column: The name of the numeric column to scale.
+   :type column: str
+   :param method:
+                  The method used for scaling. Options include:
+                      - `minmax`: Scales values between `new_min` and `new_max`, used as default method.
+                      - `standard`: Scales values with mean of 0 and standard deviation of 1.
+   :type method: str
+   :param new_min: The lower boundary value for min-max scaling. Default value is 0.
+   :type new_min: float
+   :param new_max: The upper boundary value for min-max scaling. Default value is 1.
+   :type new_max: float
+   :param inplace: If `True` the original column is replaced with new scaled values.
+                   If `False` the original column is retained and the new scaled column is
+                   added to the dataframe with title `<column-name>-scaled`.
+                   Default is True.
+   :type inplace: bool
+
+   :returns: A copy of the DataFrame with the scaled column replacing the original column if `inplace` is set to `True`.
+             If `inplace` is set to `False`, the copy of DataFrame is returned with the new scaled column added, keeping the original column.
+   :rtype: pandas.DataFrame
+
+   :raises TypeError: If the input `data` is not a pandas DataFrame.
+   :raises KeyError:: If the column passed for scaling does not exist in the DataFrame.
+   :raises ValueError:: If the column passed for scaling is not numeric.
+       If the `method` is not `minmax` or `standard`.
+       If the `new_min` value is greater or equal to the `new_max` when using `minmax` method.
+
+   .. rubric:: Examples
+
+   >>> import pandas as pd
+   >>> df = pd.DataFrame({"price": [25, 50, 75]})
+   >>> df_scaled = column_scaler(df, column = 'price', method='minmax', new_min=0, new_max=1)
+   >>> print(df_scaled)
+           price
+           0.0
+           0.5
+           1.0
+
+
+.. py:function:: sweep_nulls(data, strategy='mean', columns=None, fill_value=None)
+
+   Handles missing values in a dataset using the specified strategy.
+
+   :param data: The input dataset where missing values need to be handled.
+   :type data: pandas.DataFrame
+   :param strategy: The strategy to use for handling missing values. Supported options are:
+                    - 'mean': For numeric columns only. Replace missing values with the mean of the respective column.
+                    - 'median': For numeric columns only. Replace missing values with the median of the respective column.
+                    - 'mode': Replace missing values with the mode (most frequent value) of the respective column.
+                    - 'constant': Replace missing values with a specified constant value (requires `fill_value`).
+                    - 'drop': Drop rows or columns containing missing values (depending on the `columns` parameter).
+   :type strategy: {'mean', 'median', 'mode', 'constant', 'drop'}, optional, default='mean'
+   :param columns: The specific columns to apply the missing value handling.
+                   If None or an empty list, the strategy is applied to all columns.
+   :type columns: list of str or None, optional, default=None
+   :param fill_value: The constant value to use when `strategy='constant'`. Ignored for other strategies.
+   :type fill_value: int, float, str, or None, optional, default=None
+
+   :returns: A new DataFrame with missing values handled based on the specified strategy.
+   :rtype: pandas.DataFrame
+
+   :raises ValueError: - If the input data is not a pandas.DataFrame.
+       - If the input strategy is not in 'mean', 'median', 'mode', 'constant', or 'drop'.
+       - If `fill_value` is missing for the 'constant' strategy.
+   :raises KeyError: If any specified column in `columns` does not exist in the pandas.DataFrame.
+   :raises TypeError: If the input of `fill_value` is not a number or a string.
+
+   .. rubric:: Examples
+
+   a    b     c
+
+   0  10.0  1.5     x
+   1   NaN  2.5  None
+   2  30.0  NaN     z
+
+   >>> cleaned = sweep_nulls(data, strategy='mean')
+   >>> print(cleaned)
+           a    b     c
+       0  10.0  1.5     x
+       1  20.0  2.5  None
+       2  30.0  2.0     z
+
+
+

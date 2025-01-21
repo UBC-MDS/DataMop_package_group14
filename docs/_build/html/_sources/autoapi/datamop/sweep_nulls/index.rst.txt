@@ -1,0 +1,62 @@
+datamop.sweep_nulls
+===================
+
+.. py:module:: datamop.sweep_nulls
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   datamop.sweep_nulls.sweep_nulls
+
+
+Module Contents
+---------------
+
+.. py:function:: sweep_nulls(data, strategy='mean', columns=None, fill_value=None)
+
+   Handles missing values in a dataset using the specified strategy.
+
+   :param data: The input dataset where missing values need to be handled.
+   :type data: pandas.DataFrame
+   :param strategy: The strategy to use for handling missing values. Supported options are:
+                    - 'mean': For numeric columns only. Replace missing values with the mean of the respective column.
+                    - 'median': For numeric columns only. Replace missing values with the median of the respective column.
+                    - 'mode': Replace missing values with the mode (most frequent value) of the respective column.
+                    - 'constant': Replace missing values with a specified constant value (requires `fill_value`).
+                    - 'drop': Drop rows or columns containing missing values (depending on the `columns` parameter).
+   :type strategy: {'mean', 'median', 'mode', 'constant', 'drop'}, optional, default='mean'
+   :param columns: The specific columns to apply the missing value handling.
+                   If None or an empty list, the strategy is applied to all columns.
+   :type columns: list of str or None, optional, default=None
+   :param fill_value: The constant value to use when `strategy='constant'`. Ignored for other strategies.
+   :type fill_value: int, float, str, or None, optional, default=None
+
+   :returns: A new DataFrame with missing values handled based on the specified strategy.
+   :rtype: pandas.DataFrame
+
+   :raises ValueError: - If the input data is not a pandas.DataFrame.
+       - If the input strategy is not in 'mean', 'median', 'mode', 'constant', or 'drop'.
+       - If `fill_value` is missing for the 'constant' strategy.
+   :raises KeyError: If any specified column in `columns` does not exist in the pandas.DataFrame.
+   :raises TypeError: If the input of `fill_value` is not a number or a string.
+
+   .. rubric:: Examples
+
+   a    b     c
+
+   0  10.0  1.5     x
+   1   NaN  2.5  None
+   2  30.0  NaN     z
+
+   >>> cleaned = sweep_nulls(data, strategy='mean')
+   >>> print(cleaned)
+           a    b     c
+       0  10.0  1.5     x
+       1  20.0  2.5  None
+       2  30.0  2.0     z
+
+
+

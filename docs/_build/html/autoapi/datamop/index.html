@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datamop &mdash; datamop  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="datamop.column_encoder" href="column_encoder/index.html" />
+    <link rel="prev" title="API Reference" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            datamop
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">datamop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="column_encoder/index.html">datamop.column_encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="column_scaler/index.html">datamop.column_scaler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sweep_nulls/index.html">datamop.sweep_nulls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datamop.__version__"><code class="docutils literal notranslate"><span class="pre">__version__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datamop.column_encoder"><code class="docutils literal notranslate"><span class="pre">column_encoder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datamop.column_scaler"><code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datamop.sweep_nulls"><code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">datamop</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">datamop</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autoapi/datamop/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-datamop">
+<span id="datamop"></span><h1>datamop<a class="headerlink" href="#module-datamop" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="column_encoder/index.html">datamop.column_encoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="column_scaler/index.html">datamop.column_scaler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sweep_nulls/index.html">datamop.sweep_nulls</a></li>
+</ul>
+</div>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datamop.__version__" title="datamop.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datamop.column_encoder" title="datamop.column_encoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">column_encoder</span></code></a>(df, columns[, method, order])</p></td>
+<td><p>Encodes categorical columns using one-hot or ordinal encoding based on user input.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#datamop.column_scaler" title="datamop.column_scaler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">column_scaler</span></code></a>(data, column[, method, new_min, ...])</p></td>
+<td><p>Scales the values of a specified column in a DataFrame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sweep_nulls/index.html#module-datamop.sweep_nulls" title="datamop.sweep_nulls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sweep_nulls</span></code></a>(data[, strategy, columns, fill_value])</p></td>
+<td><p>Handles missing values in a dataset using the specified strategy.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="datamop.__version__">
+<span class="sig-prename descclassname"><span class="pre">datamop.</span></span><span class="sig-name descname"><span class="pre">__version__</span></span><a class="headerlink" href="#datamop.__version__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datamop.column_encoder">
+<span class="sig-prename descclassname"><span class="pre">datamop.</span></span><span class="sig-name descname"><span class="pre">column_encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'one-hot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/datamop/column_encoder.html#column_encoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datamop.column_encoder" title="Link to this definition"></a></dt>
+<dd><p>Encodes categorical columns using one-hot or ordinal encoding based on user input.</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>The input DataFrame containing the dataset.</p>
+</dd>
+<dt>columns<span class="classifier">list</span></dt><dd><p>The name of the columns to be encoded.</p>
+</dd>
+<dt>method<span class="classifier">str, optional, default=’one-hot’</span></dt><dd><p>The encoding method to use. Accepts either ‘one-hot’ for one-hot encoding
+or ‘ordinal’ for ordinal encoding.</p>
+</dd>
+<dt>order<span class="classifier">dict, optional, default=None</span></dt><dd><p>A dictionary specifying the custom order for ordinal encoding.
+The keys should be column names, and the values should be lists
+defining the order of categories for each column.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns:<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>A new DataFrame with the specified column encoded. The original column
+will be dropped.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h3>Raises:<a class="headerlink" href="#raises" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>TypeError:</dt><dd><p>If input types are incorrect (e.g., non-DataFrame input, columns not a list of strings,
+method not a string, or order not a dictionary).</p>
+</dd>
+<dt>ValueError:</dt><dd><p>If required parameters are missing or invalid values are provided.</p>
+</dd>
+<dt>KeyError:</dt><dd><p>If specified columns are not found in the input DataFrame.</p>
+</dd>
+<dt>UserWarning:</dt><dd><p>If a column contains only one unique value or if there are missing values.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h3>Examples:<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">&#39;Sport&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tennis&#39;</span><span class="p">,</span> <span class="s1">&#39;Basketball&#39;</span><span class="p">,</span> <span class="s1">&#39;Football&#39;</span><span class="p">,</span> <span class="s1">&#39;Badminton&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;Level&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">encoded_df_onehot</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sport&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;one-hot&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">encoded_df_onehot</span><span class="p">)</span>
+<span class="go">  Level  Sport_Badminton  Sport_Basketball  Sport_Football  Sport_Tennis</span>
+<span class="go">     A                0                 0               0             1</span>
+<span class="go">     B                0                 1               0             0</span>
+<span class="go">     C                0                 0               1             0</span>
+<span class="go">     D                1                 0               0             0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">encoded_df_ordinal</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Level&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Level&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">encoded_df_ordinal</span><span class="p">)</span>
+<span class="go">        Sport  Level</span>
+<span class="go">       Tennis      0</span>
+<span class="go">    Basketball     1</span>
+<span class="go">     Football      2</span>
+<span class="go">    Badminton      3</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datamop.column_scaler">
+<span class="sig-prename descclassname"><span class="pre">datamop.</span></span><span class="sig-name descname"><span class="pre">column_scaler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/datamop/column_scaler.html#column_scaler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datamop.column_scaler" title="Link to this definition"></a></dt>
+<dd><p>Scales the values of a specified column in a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing the column of interest for scaling.</p></li>
+<li><p><strong>column</strong> (<em>str</em>) – The name of the numeric column to scale.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – <dl class="simple">
+<dt>The method used for scaling. Options include:</dt><dd><ul>
+<li><p><cite>minmax</cite>: Scales values between <cite>new_min</cite> and <cite>new_max</cite>, used as default method.</p></li>
+<li><p><cite>standard</cite>: Scales values with mean of 0 and standard deviation of 1.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>new_min</strong> (<em>float</em>) – The lower boundary value for min-max scaling. Default value is 0.</p></li>
+<li><p><strong>new_max</strong> (<em>float</em>) – The upper boundary value for min-max scaling. Default value is 1.</p></li>
+<li><p><strong>inplace</strong> (<em>bool</em>) – If <cite>True</cite> the original column is replaced with new scaled values.
+If <cite>False</cite> the original column is retained and the new scaled column is
+added to the dataframe with title <cite>&lt;column-name&gt;-scaled</cite>.
+Default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A copy of the DataFrame with the scaled column replacing the original column if <cite>inplace</cite> is set to <cite>True</cite>.
+If <cite>inplace</cite> is set to <cite>False</cite>, the copy of DataFrame is returned with the new scaled column added, keeping the original column.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the input <cite>data</cite> is not a pandas DataFrame.</p></li>
+<li><p><strong>KeyError:</strong> – If the column passed for scaling does not exist in the DataFrame.</p></li>
+<li><p><strong>ValueError:</strong> – If the column passed for scaling is not numeric.
+If the <cite>method</cite> is not <cite>minmax</cite> or <cite>standard</cite>.
+If the <cite>new_min</cite> value is greater or equal to the <cite>new_max</cite> when using <cite>minmax</cite> method.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_scaled</span> <span class="o">=</span> <span class="n">column_scaler</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;minmax&#39;</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df_scaled</span><span class="p">)</span>
+<span class="go">        price</span>
+<span class="go">        0.0</span>
+<span class="go">        0.5</span>
+<span class="go">        1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datamop.sweep_nulls">
+<span class="sig-prename descclassname"><span class="pre">datamop.</span></span><span class="sig-name descname"><span class="pre">sweep_nulls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/datamop/sweep_nulls.html#sweep_nulls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datamop.sweep_nulls" title="Link to this definition"></a></dt>
+<dd><p>Handles missing values in a dataset using the specified strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – The input dataset where missing values need to be handled.</p></li>
+<li><p><strong>strategy</strong> (<em>{'mean'</em><em>, </em><em>'median'</em><em>, </em><em>'mode'</em><em>, </em><em>'constant'</em><em>, </em><em>'drop'}</em><em>, </em><em>optional</em><em>, </em><em>default='mean'</em>) – The strategy to use for handling missing values. Supported options are:
+- ‘mean’: For numeric columns only. Replace missing values with the mean of the respective column.
+- ‘median’: For numeric columns only. Replace missing values with the median of the respective column.
+- ‘mode’: Replace missing values with the mode (most frequent value) of the respective column.
+- ‘constant’: Replace missing values with a specified constant value (requires <cite>fill_value</cite>).
+- ‘drop’: Drop rows or columns containing missing values (depending on the <cite>columns</cite> parameter).</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The specific columns to apply the missing value handling.
+If None or an empty list, the strategy is applied to all columns.</p></li>
+<li><p><strong>fill_value</strong> (<em>int</em><em>, </em><em>float</em><em>, </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The constant value to use when <cite>strategy=’constant’</cite>. Ignored for other strategies.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new DataFrame with missing values handled based on the specified strategy.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – <ul>
+<li><p>If the input data is not a pandas.DataFrame.</p></li>
+<li><p>If the input strategy is not in ‘mean’, ‘median’, ‘mode’, ‘constant’, or ‘drop’.</p></li>
+<li><p>If <cite>fill_value</cite> is missing for the ‘constant’ strategy.</p></li>
+</ul>
+</p></li>
+<li><p><strong>KeyError</strong> – If any specified column in <cite>columns</cite> does not exist in the pandas.DataFrame.</p></li>
+<li><p><strong>TypeError</strong> – If the input of <cite>fill_value</cite> is not a number or a string.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>a    b     c</p>
+<p>0  10.0  1.5     x
+1   NaN  2.5  None
+2  30.0  NaN     z</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cleaned</span> <span class="o">=</span> <span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span>
+<span class="go">        a    b     c</span>
+<span class="go">    0  10.0  1.5     x</span>
+<span class="go">    1  20.0  2.5  None</span>
+<span class="go">    2  30.0  2.0     z</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="column_encoder/index.html" class="btn btn-neutral float-right" title="datamop.column_encoder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Sepehr Heydarian, Ximin Xu, Essie Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

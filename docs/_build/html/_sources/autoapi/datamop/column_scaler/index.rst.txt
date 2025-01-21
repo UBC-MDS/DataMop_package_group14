@@ -1,0 +1,62 @@
+datamop.column_scaler
+=====================
+
+.. py:module:: datamop.column_scaler
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   datamop.column_scaler.column_scaler
+
+
+Module Contents
+---------------
+
+.. py:function:: column_scaler(data, column, method='minmax', new_min=0, new_max=1, inplace=True)
+
+   Scales the values of a specified column in a DataFrame.
+
+   :param data: The DataFrame containing the column of interest for scaling.
+   :type data: pandas.DataFrame
+   :param column: The name of the numeric column to scale.
+   :type column: str
+   :param method:
+                  The method used for scaling. Options include:
+                      - `minmax`: Scales values between `new_min` and `new_max`, used as default method.
+                      - `standard`: Scales values with mean of 0 and standard deviation of 1.
+   :type method: str
+   :param new_min: The lower boundary value for min-max scaling. Default value is 0.
+   :type new_min: float
+   :param new_max: The upper boundary value for min-max scaling. Default value is 1.
+   :type new_max: float
+   :param inplace: If `True` the original column is replaced with new scaled values.
+                   If `False` the original column is retained and the new scaled column is
+                   added to the dataframe with title `<column-name>-scaled`.
+                   Default is True.
+   :type inplace: bool
+
+   :returns: A copy of the DataFrame with the scaled column replacing the original column if `inplace` is set to `True`.
+             If `inplace` is set to `False`, the copy of DataFrame is returned with the new scaled column added, keeping the original column.
+   :rtype: pandas.DataFrame
+
+   :raises TypeError: If the input `data` is not a pandas DataFrame.
+   :raises KeyError:: If the column passed for scaling does not exist in the DataFrame.
+   :raises ValueError:: If the column passed for scaling is not numeric.
+       If the `method` is not `minmax` or `standard`.
+       If the `new_min` value is greater or equal to the `new_max` when using `minmax` method.
+
+   .. rubric:: Examples
+
+   >>> import pandas as pd
+   >>> df = pd.DataFrame({"price": [25, 50, 75]})
+   >>> df_scaled = column_scaler(df, column = 'price', method='minmax', new_min=0, new_max=1)
+   >>> print(df_scaled)
+           price
+           0.0
+           0.5
+           1.0
+
+
