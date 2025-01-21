@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>datamop.sweep_nulls &mdash; datamop  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="datamop.column_scaler" href="../column_scaler/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            datamop
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">datamop</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../column_encoder/index.html">datamop.column_encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../column_scaler/index.html">datamop.column_scaler</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">datamop.sweep_nulls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">datamop</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">datamop</a></li>
+      <li class="breadcrumb-item active">datamop.sweep_nulls</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/datamop/sweep_nulls/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-datamop.sweep_nulls">
+<span id="datamop-sweep-nulls"></span><h1>datamop.sweep_nulls<a class="headerlink" href="#module-datamop.sweep_nulls" title="Link to this heading"></a></h1>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#datamop.sweep_nulls.sweep_nulls" title="datamop.sweep_nulls.sweep_nulls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sweep_nulls</span></code></a>(data[, strategy, columns, fill_value])</p></td>
+<td><p>Handles missing values in a dataset using the specified strategy.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="datamop.sweep_nulls.sweep_nulls">
+<span class="sig-prename descclassname"><span class="pre">datamop.sweep_nulls.</span></span><span class="sig-name descname"><span class="pre">sweep_nulls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/datamop/sweep_nulls.html#sweep_nulls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#datamop.sweep_nulls.sweep_nulls" title="Link to this definition"></a></dt>
+<dd><p>Handles missing values in a dataset using the specified strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – The input dataset where missing values need to be handled.</p></li>
+<li><p><strong>strategy</strong> (<em>{'mean'</em><em>, </em><em>'median'</em><em>, </em><em>'mode'</em><em>, </em><em>'constant'</em><em>, </em><em>'drop'}</em><em>, </em><em>optional</em><em>, </em><em>default='mean'</em>) – The strategy to use for handling missing values. Supported options are:
+- ‘mean’: For numeric columns only. Replace missing values with the mean of the respective column.
+- ‘median’: For numeric columns only. Replace missing values with the median of the respective column.
+- ‘mode’: Replace missing values with the mode (most frequent value) of the respective column.
+- ‘constant’: Replace missing values with a specified constant value (requires <cite>fill_value</cite>).
+- ‘drop’: Drop rows or columns containing missing values (depending on the <cite>columns</cite> parameter).</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The specific columns to apply the missing value handling.
+If None or an empty list, the strategy is applied to all columns.</p></li>
+<li><p><strong>fill_value</strong> (<em>int</em><em>, </em><em>float</em><em>, </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The constant value to use when <cite>strategy=’constant’</cite>. Ignored for other strategies.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new DataFrame with missing values handled based on the specified strategy.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – <ul>
+<li><p>If the input data is not a pandas.DataFrame.</p></li>
+<li><p>If the input strategy is not in ‘mean’, ‘median’, ‘mode’, ‘constant’, or ‘drop’.</p></li>
+<li><p>If <cite>fill_value</cite> is missing for the ‘constant’ strategy.</p></li>
+</ul>
+</p></li>
+<li><p><strong>KeyError</strong> – If any specified column in <cite>columns</cite> does not exist in the pandas.DataFrame.</p></li>
+<li><p><strong>TypeError</strong> – If the input of <cite>fill_value</cite> is not a number or a string.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>a    b     c</p>
+<p>0  10.0  1.5     x
+1   NaN  2.5  None
+2  30.0  NaN     z</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cleaned</span> <span class="o">=</span> <span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span>
+<span class="go">        a    b     c</span>
+<span class="go">    0  10.0  1.5     x</span>
+<span class="go">    1  20.0  2.5  None</span>
+<span class="go">    2  30.0  2.0     z</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../column_scaler/index.html" class="btn btn-neutral float-left" title="datamop.column_scaler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Sepehr Heydarian, Ximin Xu, Essie Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
