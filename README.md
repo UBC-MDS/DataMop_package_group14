@@ -1,5 +1,7 @@
 # datamop
 
+[![Documentation Status](https://readthedocs.org/projects/datamop/badge/?version=latest)](https://datamop.readthedocs.io/en/latest/)[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
 `datamop` is a data cleaning and wrangling package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numeric columns when dealing with data. `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
 The following are core functions of this package:
 
@@ -66,10 +68,12 @@ df_scaled = datamop.column_scaler(df, column = 'price', method='minmax', new_min
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+See CONTRIBUTING file [here](CONTRIBUTING.md).
 
 ## License
 
 `datamop` was created by Sepehr Heydarian, Ximin Xu, Essie Zhang. It is licensed under the terms of the MIT license.
+See LICENSE file [here](LICENSE).
 
 ## Credits
 
