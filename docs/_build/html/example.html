@@ -6,10 +6,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Example usage &mdash; datamop  documentation</title>
+  <title>DataMop Tutorial &mdash; datamop  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
@@ -45,7 +45,45 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Example usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DataMop Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#importing-and-version-checking">Importing and Version Checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-missing-values-with-sweep-nulls">Handling missing values with <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#imputing-all-columns">Imputing all columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imputing-specific-numerical-columns">Imputing specific numerical columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imputing-specific-categorical-columns">Imputing specific categorical columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dropping-columns">Dropping columns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scaling-numerical-features-with-column-scaler">Scaling Numerical Features with <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-the-data-for-scaling">Preparing the Data for Scaling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-check-column-types">Pre-check column types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-min-max-scaling">Example 1: Min-Max Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-custom-min-max-scaling-with-a-new-column">Example 2: Custom Min-Max Scaling with a New Column</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-standard-scaling">Example 3: Standard Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edge-case-1-scaling-column-with-single-unique-value">Edge Case 1: Scaling Column with Single Unique Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edge-case-2-handling-missing-values-nan">Edge Case 2: Handling Missing Values (NaN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-1-using-non-existent-column">Error Case 1: Using Non-Existent Column</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-2-using-non-numeric-columns">Error Case 2: Using Non-Numeric Columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-3-using-invalid-method">Error Case 3: Using Invalid Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-4-using-invalid-new-min-and-new-max-values">Error Case 4: Using Invalid <code class="docutils literal notranslate"><span class="pre">new_min</span></code> and <code class="docutils literal notranslate"><span class="pre">new_max</span></code> Values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#encoding-columns-using-column-encoder">Encoding Columns using column_encoder()</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-one-hot-encoding">Example 1: One hot encoding:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-ordinal-encoding">Example 2: Ordinal encoding:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edge-case-1-1-unique-value-for-ordinal-encoding">Edge Case 1: 1 unique value for ordinal encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edge-case-2-missing-value">Edge Case 2: Missing value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edge-case-3-empty-dataframe">Edge Case 3: Empty dataframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-1-set-order-while-using-one-hot-encoding">Error Case 1: Set <code class="docutils literal notranslate"><span class="pre">order</span></code> while using <code class="docutils literal notranslate"><span class="pre">one-hot</span></code> encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-2-unmatch-order-and-column-value">Error Case 2: Unmatch <code class="docutils literal notranslate"><span class="pre">order</span></code> and column value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-3-missing-or-wrong-parameters">Error Case 3: Missing or wrong parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-case-4-columns-does-not-match-actual-dataframe">Error Case 4: <code class="docutils literal notranslate"><span class="pre">columns</span></code> does not match actual dataframe</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conduct.html">Code of Conduct</a></li>
@@ -66,7 +104,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Example usage</li>
+      <li class="breadcrumb-item active">DataMop Tutorial</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/example.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,23 +114,4263 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="example-usage">
-<h1>Example usage<a class="headerlink" href="#example-usage" title="Link to this heading"></a></h1>
-<p>To use <code class="docutils literal notranslate"><span class="pre">datamop</span></code> in a project:</p>
+  <section id="datamop-tutorial">
+<h1>DataMop Tutorial<a class="headerlink" href="#datamop-tutorial" title="Link to this heading"></a></h1>
+<p>Welcome to the tutorial for <code class="docutils literal notranslate"><span class="pre">datamop</span></code>, the ultimate Python package for cleaning and preparing your datasets with minimal effort. Data cleaning can often feel like the most tedious part of any data analysis or machine learning project. Missing values, inconsistent scales, and different data types can slow you down and distract from the real task: extracting insights from your data.</p>
+<p>That is where <code class="docutils literal notranslate"><span class="pre">datamop</span></code> package comes in! This powerful, easy-to-use package automates many of the common data cleaning tasks, like imputing missing values, encoding categorical features and scaling numerical features, saving you time and effort while ensuring your data is consistent, complete, and ready for analysis.</p>
+<p>Here we will show example usages for each function in the package, including <code class="docutils literal notranslate"><span class="pre">sweep_nulls</span></code>, <code class="docutils literal notranslate"><span class="pre">column_encoder</span></code>, and <code class="docutils literal notranslate"><span class="pre">column_scaler</span></code>. Your messy data will be ready to use after using this robust package. With <code class="docutils literal notranslate"><span class="pre">datamop</span></code>, you can focus more on analysis and less on tedious preprocessing.</p>
+<section id="importing-and-version-checking">
+<h2>Importing and Version Checking<a class="headerlink" href="#importing-and-version-checking" title="Link to this heading"></a></h2>
+<p>Before we get started, let’s install and import the <code class="docutils literal notranslate"><span class="pre">datamop</span></code> package. We will demonstrate each functions in the <code class="docutils literal notranslate"><span class="pre">datamop</span></code> package with examples using the Airbnb Open Data from kaggle.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datamop</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import modules</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datamop.sweep_nulls</span><span class="w"> </span><span class="kn">import</span> <span class="n">sweep_nulls</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datamop.column_encoder</span><span class="w"> </span><span class="kn">import</span> <span class="n">column_encoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datamop.column_scaler</span><span class="w"> </span><span class="kn">import</span> <span class="n">column_scaler</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">datamop</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="c1"># import Airbnb Open Data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../src/data/Airbnb_Open_Data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="handling-missing-values-with-sweep-nulls">
+<h2>Handling missing values with <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code><a class="headerlink" href="#handling-missing-values-with-sweep-nulls" title="Link to this heading"></a></h2>
+<p>One of the most common challenges in data cleaning process is dealing with missing values. <code class="docutils literal notranslate"><span class="pre">datamop</span></code> provides a convenient method called <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code> to help you handle these issues effortlessly. The <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code> function scans your dataset for missing values and allows you to handle them using various strategies, including ‘mean’(numeric only), ‘median’(numeric only), ‘mode’, ‘constant’, and ‘drop’.</p>
+<p>Let’s start by checking the missing values in the dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 102599 entries, 0 to 102598
+Data columns (total 20 columns):
+ #   Column                          Non-Null Count   Dtype  
+---  ------                          --------------   -----  
+ 0   id                              102599 non-null  int64  
+ 1   host_identity_verified          102310 non-null  object 
+ 2   neighbourhood group             102570 non-null  object 
+ 3   neighbourhood                   102583 non-null  object 
+ 4   lat                             102591 non-null  float64
+ 5   long                            102591 non-null  float64
+ 6   country                         102067 non-null  object 
+ 7   instant_bookable                102494 non-null  object 
+ 8   cancellation_policy             102523 non-null  object 
+ 9   room type                       102599 non-null  object 
+ 10  Construction year               102385 non-null  float64
+ 11  price                           102352 non-null  object 
+ 12  service fee                     102326 non-null  object 
+ 13  minimum nights                  102190 non-null  float64
+ 14  number of reviews               102416 non-null  float64
+ 15  last review                     86706 non-null   object 
+ 16  reviews per month               86720 non-null   float64
+ 17  review rate number              102273 non-null  float64
+ 18  calculated host listings count  102280 non-null  float64
+ 19  availability 365                102151 non-null  float64
+dtypes: float64(9), int64(1), object(10)
+memory usage: 15.7+ MB
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>NaN</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id                                    0
+host_identity_verified              289
+neighbourhood group                  29
+neighbourhood                        16
+lat                                   8
+long                                  8
+country                             532
+instant_bookable                    105
+cancellation_policy                  76
+room type                             0
+Construction year                   214
+price                               247
+service fee                         273
+minimum nights                      409
+number of reviews                   183
+last review                       15893
+reviews per month                 15879
+review rate number                  326
+calculated host listings count      319
+availability 365                    448
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="imputing-all-columns">
+<h3>Imputing all columns<a class="headerlink" href="#imputing-all-columns" title="Link to this heading"></a></h3>
+<p>When dealing with datasets containing missing values across multiple columns, <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code>makes it easy to impute all columns simultaneously. This feature ensures consistent handling of missing data throughout the dataset, whether you’re using the mean, median, mode, or a custom value for imputation.</p>
+<p>Since ‘mean’ and ‘median’ are designed for numerical features only, it is better to use ‘mode’, ‘constant’ or ‘drop’ when you have mixed data types in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using mode to impute missing value with the most common values in the column</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mode&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/sweep_nulls.py:68: UserWarning: Columns list is empty. Applying strategy to all columns.
+  warnings.warn(&quot;Columns list is empty. Applying strategy to all columns.&quot;, UserWarning)
+/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/sweep_nulls.py:116: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option(&#39;future.no_silent_downcasting&#39;, True)`
+  data[column] = data[column].fillna(data[column].mode()[0])
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using constant to impute missing value with a number</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=-</span><span class="mi">999</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/sweep_nulls.py:68: UserWarning: Columns list is empty. Applying strategy to all columns.
+  warnings.warn(&quot;Columns list is empty. Applying strategy to all columns.&quot;, UserWarning)
+/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/sweep_nulls.py:120: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option(&#39;future.no_silent_downcasting&#39;, True)`
+  data[column] = data[column].fillna(fill_value)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="imputing-specific-numerical-columns">
+<h3>Imputing specific numerical columns<a class="headerlink" href="#imputing-specific-numerical-columns" title="Link to this heading"></a></h3>
+<p>If you want to focus on imputing missing values in specific numerical columns of your dataset without affecting other columns, you can achieve this by using <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code> to select the desired columns and apply an imputation strategy only to them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using mean to impute price and service fee columns</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;service fee&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/sweep_nulls.py:113: UserWarning: Strategy &#39;mean&#39; cannot be applied to non-numeric column &#39;price&#39;
+  warnings.warn(f&quot;Strategy &#39;{strategy}&#39; cannot be applied to non-numeric column &#39;{column}&#39;&quot;, UserWarning)
+/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/sweep_nulls.py:113: UserWarning: Strategy &#39;mean&#39; cannot be applied to non-numeric column &#39;service fee&#39;
+  warnings.warn(f&quot;Strategy &#39;{strategy}&#39; cannot be applied to non-numeric column &#39;{column}&#39;&quot;, UserWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using constant to impute price and service fee columns with a negative number</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;service fee&#39;</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=-</span><span class="mi">999</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="imputing-specific-categorical-columns">
+<h3>Imputing specific categorical columns<a class="headerlink" href="#imputing-specific-categorical-columns" title="Link to this heading"></a></h3>
+<p>When working with datasets containing missing values in categorical columns, you can impute missing values in specific categorical columns using common strategies like filling with the mode, or a custom value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using constant to impute missing value with a string</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;host_identity_verified&#39;</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;missing&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using mode to impute missing value with the most common values in the column</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="dropping-columns">
+<h3>Dropping columns<a class="headerlink" href="#dropping-columns" title="Link to this heading"></a></h3>
+<p>When working with datasets, some columns may have excessive missing values, which makes them unhelpful for analysis. Imputing them can introduce noise, therefore <code class="docutils literal notranslate"><span class="pre">sweep_nulls()</span></code> allows you to drop columns with missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dropping one column</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;instant_bookable&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dropping multiple columns</span>
+<span class="n">sweep_nulls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;instant_bookable&#39;</span><span class="p">,</span> <span class="s1">&#39;host_identity_verified&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102594</th>
+      <td>6092437</td>
+      <td>verified</td>
+      <td>Brooklyn</td>
+      <td>Williamsburg</td>
+      <td>40.70862</td>
+      <td>-73.94651</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2003.0</td>
+      <td>$844.00</td>
+      <td>$169.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>227.0</td>
+    </tr>
+    <tr>
+      <th>102595</th>
+      <td>6092990</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Morningside Heights</td>
+      <td>40.80460</td>
+      <td>-73.96545</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2016.0</td>
+      <td>$837.00</td>
+      <td>$167.00</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>7/6/2015</td>
+      <td>0.02</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>395.0</td>
+    </tr>
+    <tr>
+      <th>102596</th>
+      <td>6093542</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Park Slope</td>
+      <td>40.67505</td>
+      <td>-73.98045</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Private room</td>
+      <td>2009.0</td>
+      <td>$988.00</td>
+      <td>$198.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <th>102597</th>
+      <td>6094094</td>
+      <td>unconfirmed</td>
+      <td>Queens</td>
+      <td>Long Island City</td>
+      <td>40.74989</td>
+      <td>-73.93777</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>strict</td>
+      <td>Entire home/apt</td>
+      <td>2015.0</td>
+      <td>$546.00</td>
+      <td>$109.00</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10/11/2015</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>386.0</td>
+    </tr>
+    <tr>
+      <th>102598</th>
+      <td>6094647</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Upper West Side</td>
+      <td>40.76807</td>
+      <td>-73.98342</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>flexible</td>
+      <td>Entire home/apt</td>
+      <td>2010.0</td>
+      <td>$1,032.00</td>
+      <td>$206.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>102599 rows × 20 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="scaling-numerical-features-with-column-scaler">
+<h2>Scaling Numerical Features with <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code><a class="headerlink" href="#scaling-numerical-features-with-column-scaler" title="Link to this heading"></a></h2>
+<p>When working with numerical data, inconsistent scales can distort analysis or machine learning results.
+For example, a column measuring <code class="docutils literal notranslate"><span class="pre">price</span></code> in thousands might dominate another column measuring <code class="docutils literal notranslate"><span class="pre">rating</span></code> on a 1-5 scale.
+To avoid this issue, scaling the numerical data to a consistent range or distribution can mitigate this problem.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> function in the <code class="docutils literal notranslate"><span class="pre">datamop</span></code> package allows users to scale any numeric column in a dataset. It supports two methods:</p>
+<ul class="simple">
+<li><p><strong>Min-Max Scaling</strong>: Scale values to a specific range, such as <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> or <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">20]</span></code>.</p></li>
+<li><p><strong>Standard Scaling</strong>: Transform values to have a mean of <code class="docutils literal notranslate"><span class="pre">0</span></code> and a standard deviation of <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> function allows flexible usage for both in-place scaling (replacing the original column) and creating a new scaled column.</p>
+<p>Let’s walk through how to use <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code>.</p>
+<section id="preparing-the-data-for-scaling">
+<h3>Preparing the Data for Scaling<a class="headerlink" href="#preparing-the-data-for-scaling" title="Link to this heading"></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>country</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>room type</th>
+      <th>Construction year</th>
+      <th>price</th>
+      <th>service fee</th>
+      <th>minimum nights</th>
+      <th>number of reviews</th>
+      <th>last review</th>
+      <th>reviews per month</th>
+      <th>review rate number</th>
+      <th>calculated host listings count</th>
+      <th>availability 365</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+      <td>40.64749</td>
+      <td>-73.97237</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>strict</td>
+      <td>Private room</td>
+      <td>2020.0</td>
+      <td>$966.00</td>
+      <td>$193.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>10/19/2021</td>
+      <td>0.21</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>286.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+      <td>40.75362</td>
+      <td>-73.98377</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2007.0</td>
+      <td>$142.00</td>
+      <td>$28.00</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>5/21/2022</td>
+      <td>0.38</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>228.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+      <td>40.80902</td>
+      <td>-73.94190</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>flexible</td>
+      <td>Private room</td>
+      <td>2005.0</td>
+      <td>$620.00</td>
+      <td>$124.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6/23/2019</td>
+      <td>0.03</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>352.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+      <td>40.68514</td>
+      <td>-73.95976</td>
+      <td>United States</td>
+      <td>True</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2005.0</td>
+      <td>$368.00</td>
+      <td>$74.00</td>
+      <td>30.0</td>
+      <td>270.0</td>
+      <td>7/5/2019</td>
+      <td>4.64</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>322.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+      <td>40.79851</td>
+      <td>-73.94399</td>
+      <td>United States</td>
+      <td>False</td>
+      <td>moderate</td>
+      <td>Entire home/apt</td>
+      <td>2009.0</td>
+      <td>$204.00</td>
+      <td>$41.00</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11/19/2018</td>
+      <td>0.10</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>289.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="pre-check-column-types">
+<h4>Pre-check column types<a class="headerlink" href="#pre-check-column-types" title="Link to this heading"></a></h4>
+<p>Before scaling, ensure that numerical columns are in the correct format.
+In the Airbnb dataset, the <code class="docutils literal notranslate"><span class="pre">price</span></code> and <code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">fee</span></code> columns are objects because they contain a <code class="docutils literal notranslate"><span class="pre">$</span></code> sign.
+We need to remove the <code class="docutils literal notranslate"><span class="pre">$</span></code> sign and convert these columns to floats.
+Additionally, we’ll demonstrate scaling on the <code class="docutils literal notranslate"><span class="pre">reviews</span> <span class="pre">per</span> <span class="pre">month</span></code> column, which is already a numeric column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean &quot;price&quot; and &quot;service fee&quot; columns by removing unwanted characters and converting to float</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9.]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;service fee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;service fee&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^0-9.]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Verify the changes</span>
+<span class="n">data</span><span class="p">[[</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;service fee&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>service fee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>966.0</td>
+      <td>193.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>142.0</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>620.0</td>
+      <td>124.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>368.0</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>204.0</td>
+      <td>41.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="example-1-min-max-scaling">
+<h3>Example 1: Min-Max Scaling<a class="headerlink" href="#example-1-min-max-scaling" title="Link to this heading"></a></h3>
+<p>Let’s scale the <code class="docutils literal notranslate"><span class="pre">reviews</span> <span class="pre">per</span> <span class="pre">month</span></code> column to a range between 0 and 1 using min-max scaling.<br />
+The scaled values will replace the original column (<code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using min-max scaling to scale &quot;reviews per month&quot; to a range between 0 and 1</span>
+<span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;reviews per month&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Verify the scaled column</span>
+<span class="n">data</span><span class="p">[[</span><span class="s2">&quot;reviews per month&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reviews per month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.002222</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.004112</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.000222</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.051450</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.001000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="example-2-custom-min-max-scaling-with-a-new-column">
+<h3>Example 2: Custom Min-Max Scaling with a New Column<a class="headerlink" href="#example-2-custom-min-max-scaling-with-a-new-column" title="Link to this heading"></a></h3>
+<p>Now let’s scale the <code class="docutils literal notranslate"><span class="pre">price</span></code> column to a range between 100 and 500. Instead of modifying the original column, we’ll create a new column called <code class="docutils literal notranslate"><span class="pre">price_scaled</span></code> by setting <code class="docutils literal notranslate"><span class="pre">inplace=False</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using min-max scaling to scale &quot;price&quot; to a range between 100 and 500</span>
+<span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Verify the new scaled column</span>
+<span class="n">data</span><span class="p">[[</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;price_scaled&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>price_scaled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>966.0</td>
+      <td>418.608696</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>142.0</td>
+      <td>132.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>620.0</td>
+      <td>298.260870</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>368.0</td>
+      <td>210.608696</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>204.0</td>
+      <td>153.565217</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="example-3-standard-scaling">
+<h3>Example 3: Standard Scaling<a class="headerlink" href="#example-3-standard-scaling" title="Link to this heading"></a></h3>
+<p>Let’s scale the <code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">fee</span></code> column using the standard scaling method,
+which transforms the values to have a mean of 0 and standard deviation of 1.
+The scaled values will replace the original column (<code class="docutils literal notranslate"><span class="pre">incplace=True</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using standard scaling method on &quot;service fee&quot; column</span>
+<span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;service fee&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Verify the scaled column</span>
+<span class="n">data</span><span class="p">[[</span><span class="s2">&quot;service fee&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>service fee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.027387</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.458349</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.012102</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.765356</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.262503</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="edge-case-1-scaling-column-with-single-unique-value">
+<h3>Edge Case 1: Scaling Column with Single Unique Value<a class="headerlink" href="#edge-case-1-scaling-column-with-single-unique-value" title="Link to this heading"></a></h3>
+<p>If a column contains only a single unique value, <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> automatically assigns the midpoint of the range for min-max scaling and issues a warning message.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create DataFrame with a single-value column</span>
+<span class="n">single_value_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]})</span>
+
+<span class="c1"># Scale the column using min-max scaling</span>
+<span class="n">scaled_df</span> <span class="o">=</span> <span class="n">column_scaler</span><span class="p">(</span><span class="n">single_value_df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Verify the result</span>
+<span class="n">scaled_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/column_scaler.py:86: UserWarning: Single-value column detected. All values will be scaled to the midpoint of the `new_min` and `new_max`.
+  warnings.warn(&quot;Single-value column detected. All values will be scaled to the midpoint of the `new_min` and `new_max`.&quot;, UserWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="edge-case-2-handling-missing-values-nan">
+<h3>Edge Case 2: Handling Missing Values (NaN)<a class="headerlink" href="#edge-case-2-handling-missing-values-nan" title="Link to this heading"></a></h3>
+<p>If a column contains missing values (<code class="docutils literal notranslate"><span class="pre">NaN</span></code>), <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> leaves them unchanged and issue a warning. This ensures no data is lost or imputed incorrectly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a DataFrame with NaN values</span>
+<span class="n">nan_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;reviews per month&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">20</span><span class="p">]})</span>
+
+<span class="c1"># Scaled the column using min-max scaling</span>
+<span class="n">scaled_nan_df</span> <span class="o">=</span> <span class="n">column_scaler</span><span class="p">(</span><span class="n">nan_df</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;reviews per month&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Verify the result</span>
+<span class="n">scaled_nan_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/column_scaler.py:83: UserWarning: NaN value detected in column &#39;{column}&#39;. They will be unchanged
+  warnings.warn(&quot;NaN value detected in column &#39;{column}&#39;. They will be unchanged&quot;, UserWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reviews per month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="error-case-1-using-non-existent-column">
+<h3>Error Case 1: Using Non-Existent Column<a class="headerlink" href="#error-case-1-using-non-existent-column" title="Link to this heading"></a></h3>
+<p>If the specified column does not exist in the DataFrame, <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> raises a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass non existent column in the &#39;column&#39; argument</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;Non_existent&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Column not found in the DataFrame.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-case-2-using-non-numeric-columns">
+<h3>Error Case 2: Using Non-Numeric Columns<a class="headerlink" href="#error-case-2-using-non-numeric-columns" title="Link to this heading"></a></h3>
+<p>If you attempt to scale a non-numeric column, such column of strings, <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass column of objects (country column) to column scaler</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Column must have numeric values.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-case-3-using-invalid-method">
+<h3>Error Case 3: Using Invalid Method<a class="headerlink" href="#error-case-3-using-invalid-method" title="Link to this heading"></a></h3>
+<p>If you specify a method other than <code class="docutils literal notranslate"><span class="pre">minmax</span></code> or <code class="docutils literal notranslate"><span class="pre">standard</span></code>, <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass invalid method to column scaler</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;invalid_method&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid method. Method should be `minmax` or `standard`.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-case-4-using-invalid-new-min-and-new-max-values">
+<h3>Error Case 4: Using Invalid <code class="docutils literal notranslate"><span class="pre">new_min</span></code> and <code class="docutils literal notranslate"><span class="pre">new_max</span></code> Values<a class="headerlink" href="#error-case-4-using-invalid-new-min-and-new-max-values" title="Link to this heading"></a></h3>
+<p>For min-max scaling, if the <code class="docutils literal notranslate"><span class="pre">new_min</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">new_max</span></code>, <code class="docutils literal notranslate"><span class="pre">column_scaler()</span></code> raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass new_min greater than new_max</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">column_scaler</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`new_min` cannot be greater than `new_max`.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="encoding-columns-using-column-encoder">
+<h2>Encoding Columns using column_encoder()<a class="headerlink" href="#encoding-columns-using-column-encoder" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">column_encoder()</span></code> function encodes columns in a pandas DataFrame using one-hot or ordinal encoding based on user preferences. It accepts the DataFrame, a list of columns to encode, the encoding method (<code class="docutils literal notranslate"><span class="pre">one-hot</span></code> or <code class="docutils literal notranslate"><span class="pre">ordinal</span></code>), and an custom order for ordinal encoding. The function returns a new DataFrame with the specified columns encoded and provides robust error handling for invalid input types, missing columns, or mismatched category orders. It also issues warnings for potential issues like single unique values or missing data in the columns.</p>
+<p>Let’s check how to use column_encoder():</p>
+<section id="example-1-one-hot-encoding">
+<h3>Example 1: One hot encoding:<a class="headerlink" href="#example-1-one-hot-encoding" title="Link to this heading"></a></h3>
+<p>Let’s select our data for one hot encoding:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_onehot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data_onehot</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group</th>
+      <th>neighbourhood</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Kensington</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>Midtown</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>unconfirmed</td>
+      <td>Manhattan</td>
+      <td>Harlem</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>unconfirmed</td>
+      <td>Brooklyn</td>
+      <td>Clinton Hill</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>verified</td>
+      <td>Manhattan</td>
+      <td>East Harlem</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s encode the column <code class="docutils literal notranslate"><span class="pre">neighbourhood</span> <span class="pre">group</span></code> and <code class="docutils literal notranslate"><span class="pre">neighbourhood</span></code> using <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'onehot'</span></code> :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;neighbourhood group&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbourhood&#39;</span><span class="p">]</span>
+<span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_onehot</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;one-hot&#39;</span><span class="p">)</span>
+<span class="n">encoded_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>host_identity_verified</th>
+      <th>neighbourhood group_Bronx</th>
+      <th>neighbourhood group_Brooklyn</th>
+      <th>neighbourhood group_Manhattan</th>
+      <th>neighbourhood group_Queens</th>
+      <th>neighbourhood group_Staten Island</th>
+      <th>neighbourhood group_brookln</th>
+      <th>neighbourhood group_manhatan</th>
+      <th>neighbourhood_Allerton</th>
+      <th>neighbourhood_Arden Heights</th>
+      <th>...</th>
+      <th>neighbourhood_Westerleigh</th>
+      <th>neighbourhood_Whitestone</th>
+      <th>neighbourhood_Williamsbridge</th>
+      <th>neighbourhood_Williamsburg</th>
+      <th>neighbourhood_Willowbrook</th>
+      <th>neighbourhood_Windsor Terrace</th>
+      <th>neighbourhood_Woodhaven</th>
+      <th>neighbourhood_Woodlawn</th>
+      <th>neighbourhood_Woodrow</th>
+      <th>neighbourhood_Woodside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>unconfirmed</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>verified</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>unconfirmed</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>unconfirmed</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>verified</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 232 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="example-2-ordinal-encoding">
+<h3>Example 2: Ordinal encoding:<a class="headerlink" href="#example-2-ordinal-encoding" title="Link to this heading"></a></h3>
+<p>Let’s select our data for <code class="docutils literal notranslate"><span class="pre">ordinal</span></code> encoding:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;cancellation_policy&#39;</span><span class="p">]</span>
+<span class="n">data_ordinal</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data_ordinal</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>flexible</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>moderate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s custom the ordinal order of <code class="docutils literal notranslate"><span class="pre">cancellation_policy</span></code> and encode the data using <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'ordinal'</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cancellation_policy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;flexible&#39;</span><span class="p">,</span> <span class="s1">&#39;moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_ordinal</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">custom_order</span><span class="p">)</span>
+<span class="n">encoded_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="edge-case-1-1-unique-value-for-ordinal-encoding">
+<h3>Edge Case 1: 1 unique value for ordinal encoding<a class="headerlink" href="#edge-case-1-1-unique-value-for-ordinal-encoding" title="Link to this heading"></a></h3>
+<p>If there is only 1 unique value in the column specified for <code class="docutils literal notranslate"><span class="pre">ordinal</span></code> encoding, the function will raise a warning</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_value_data</span> <span class="o">=</span> <span class="n">data_ordinal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">one_value_data</span><span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;strict&#39;</span>
+<span class="n">one_value_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>strict</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cancellation_policy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;strict&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">one_value_data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">custom_order</span><span class="p">)</span>
+<span class="n">encoded_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/column_encoder.py:115: UserWarning: The column &#39;cancellation_policy&#39; contains only one unique value
+  warnings.warn(f&quot;The column &#39;{column}&#39; contains only one unique value&quot;, UserWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="edge-case-2-missing-value">
+<h3>Edge Case 2: Missing value<a class="headerlink" href="#edge-case-2-missing-value" title="Link to this heading"></a></h3>
+<p>If missing value is in the dataframe, should raise a warning and leave as null value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_value_data</span> <span class="o">=</span> <span class="n">data_ordinal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">missing_value_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">missing_value_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254.0</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102.0</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>flexible</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755.0</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689.0</td>
+      <td>moderate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cancellation_policy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;flexible&#39;</span><span class="p">,</span> <span class="s1">&#39;moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">missing_value_data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">custom_order</span><span class="p">)</span>
+<span class="n">encoded_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/xuximin/Desktop/mds/524/DataMop_package_group14/src/datamop/column_encoder.py:124: UserWarning: Missing values detected. They will be left as null
+  warnings.warn(&quot;Missing values detected. They will be left as null&quot;, UserWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="edge-case-3-empty-dataframe">
+<h3>Edge Case 3: Empty dataframe<a class="headerlink" href="#edge-case-3-empty-dataframe" title="Link to this heading"></a></h3>
+<p>User input an empty dataframe, should output an empty dataframe</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">empty_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">empty_df</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;one-hot&#39;</span><span class="p">)</span>
+<span class="n">encoded_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="error-case-1-set-order-while-using-one-hot-encoding">
+<h3>Error Case 1: Set <code class="docutils literal notranslate"><span class="pre">order</span></code> while using <code class="docutils literal notranslate"><span class="pre">one-hot</span></code> encoding<a class="headerlink" href="#error-case-1-set-order-while-using-one-hot-encoding" title="Link to this heading"></a></h3>
+<p>User input dataframe, set <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'one-hot'</span></code>, input order, the output should raise a value error</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">column_encoder</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;one-hot&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">custom_order</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order parameter is not applicable for method &#39;one-hot&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-case-2-unmatch-order-and-column-value">
+<h3>Error Case 2: Unmatch <code class="docutils literal notranslate"><span class="pre">order</span></code> and column value<a class="headerlink" href="#error-case-2-unmatch-order-and-column-value" title="Link to this heading"></a></h3>
+<p>User input all parameters, set <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'ordinal'</span></code>, input order, but <code class="docutils literal notranslate"><span class="pre">order</span></code> does not match all unique values for the column, the output should raise a value error</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ec2_df</span> <span class="o">=</span> <span class="n">data_ordinal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ec2_df</span><span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;strict&#39;, &#39;moderate&#39;, &#39;flexible&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">custom_order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cancellation_policy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;flexible&#39;</span><span class="p">,</span> <span class="s1">&#39;moderate&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_ordinal</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">custom_order</span><span class="p">)</span>
+    <span class="n">encoded_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order for column &#39;cancellation_policy&#39; does not match its unique values
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-case-3-missing-or-wrong-parameters">
+<h3>Error Case 3: Missing or wrong parameters<a class="headerlink" href="#error-case-3-missing-or-wrong-parameters" title="Link to this heading"></a></h3>
+<p>If a required parameter is missing or incorrect, the output should raise an error</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_ordinal</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cancellation_policy&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order must be specified for ordinal encoding
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_ordinal</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columns parameter must be a list of strings
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-case-4-columns-does-not-match-actual-dataframe">
+<h3>Error Case 4: <code class="docutils literal notranslate"><span class="pre">columns</span></code> does not match actual dataframe<a class="headerlink" href="#error-case-4-columns-does-not-match-actual-dataframe" title="Link to this heading"></a></h3>
+<p>If the user input order does not match the columns in the dataframe, the output should raise a KeyError</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_ordinal</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>cancellation_policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001254</td>
+      <td>strict</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002102</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1002403</td>
+      <td>flexible</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1002755</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1003689</td>
+      <td>moderate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">custom_order</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;cancellation_policy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;flexible&#39;</span><span class="p">,</span> <span class="s1">&#39;moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_ordinal</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;neighbourhood&#39;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">custom_order</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;The column &#39;neighbourhood&#39; is not in the dataframe&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
 
