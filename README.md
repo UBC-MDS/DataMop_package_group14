@@ -1,5 +1,6 @@
 # datamop
 
+[![Documentation Status](https://readthedocs.org/projects/pycounts-tt25/badge/?version=latest)](https://pycounts-tt25.readthedocs.io/en/latest/?badge=latest)
 `datamop` is a data cleaning and wrangling package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numeric columns when dealing with data. `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
 The following are core functions of this package:
 
