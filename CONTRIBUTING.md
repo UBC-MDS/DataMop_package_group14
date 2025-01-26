@@ -43,21 +43,42 @@ If you are proposing a feature:
 Ready to contribute? Here's how to set up `datamop` for local development.
 
 1. Download a copy of `datamop` locally.
-2. Install `datamop` using `poetry`:
+2. Create and activate a conda environment for `datamop`:
+
+   ```bash
+    $ conda create -n datamop python=3.11
+    $ conda activate datamop
+    ```
+    
+3. Install `datamop` using `poetry`:
 
     ```console
     $ poetry install
     ```
 
-3. Use `git` (or similar) to create a branch for local development and make your changes:
+4. Use `git` (or similar) to create a branch for local development and make your changes:
 
     ```console
     $ git checkout -b name-of-your-bugfix-or-feature
     ```
 
-4. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
-5. Commit your changes and open a pull request.
+6. Commit your changes and open a pull request.
+
+## Running tests
+
+Tests (both unit and visual regression tests) should be run using `pytest`:
+
+```bash
+pytest tests/
+```
+
+Coverage can be assessed via `pytest-cov`:
+
+```bash
+pytest --cov-branch --cov=tests
+```
 
 ## Pull Request Guidelines
 
