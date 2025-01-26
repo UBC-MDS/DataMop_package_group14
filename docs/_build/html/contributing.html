@@ -47,6 +47,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="example.html">DataMop Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html#id1">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html#id4">Changelog</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#types-of-contributions">Types of Contributions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#report-bugs">Report Bugs</a></li>
@@ -57,6 +59,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pull-request-guidelines">Pull Request Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
 </ul>
@@ -136,6 +139,12 @@ are welcome :)</p></li>
 <p>Ready to contribute? Here’s how to set up <code class="docutils literal notranslate"><span class="pre">datamop</span></code> for local development.</p>
 <ol class="arabic">
 <li><p>Download a copy of <code class="docutils literal notranslate"><span class="pre">datamop</span></code> locally.</p></li>
+<li><p>Create and activate a conda environment for <code class="docutils literal notranslate"><span class="pre">datamop</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>$<span class="w"> </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>datamop<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+<span class="w"> </span>$<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>datamop
+</pre></div>
+</div>
+</li>
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">datamop</span></code> using <code class="docutils literal notranslate"><span class="pre">poetry</span></code>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>install
 </pre></div>
@@ -149,6 +158,17 @@ are welcome :)</p></li>
 <li><p>When you’re done making changes, check that your changes conform to any code formatting requirements and pass any tests.</p></li>
 <li><p>Commit your changes and open a pull request.</p></li>
 </ol>
+</section>
+<section id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h2>
+<p>Tests (both unit and visual regression tests) should be run using <code class="docutils literal notranslate"><span class="pre">pytest</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/
+</pre></div>
+</div>
+<p>Coverage can be assessed via <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov-branch<span class="w"> </span>--cov<span class="o">=</span>tests
+</pre></div>
+</div>
 </section>
 <section id="pull-request-guidelines">
 <h2>Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Link to this heading"></a></h2>
