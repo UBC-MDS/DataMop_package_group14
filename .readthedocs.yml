@@ -21,6 +21,7 @@ build:
       # Install dependencies with 'docs' dependency group
       # https://python-poetry.org/docs/managing-dependencies/#dependency-groups
       - pip install myst-nb
+      - pip install autoapi
       - poetry install
       
       
