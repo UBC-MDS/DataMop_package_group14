@@ -3597,7 +3597,7 @@ The scaled values will replace the original column (<code class="docutils litera
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;neighbourhood group&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbourhood&#39;</span><span class="p">]</span> <span class="c1">#columns to be encoded</span>
 <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">column_encoder</span><span class="p">(</span><span class="n">data_onehot</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;one-hot&#39;</span><span class="p">)</span>
-<span class="n">encoded_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="c1">#show part of data after encoded</span>
+<span class="n">encoded_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1">#show part of data after encoded</span>
 </pre></div>
 </div>
 </div>
@@ -3624,7 +3624,6 @@ The scaled values will replace the original column (<code class="docutils litera
       <th>neighbourhood group_Bronx</th>
       <th>neighbourhood group_Brooklyn</th>
       <th>neighbourhood group_Manhattan</th>
-      <th>neighbourhood group_Queens</th>
     </tr>
   </thead>
   <tbody>
@@ -3634,7 +3633,6 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -3642,7 +3640,6 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -3650,14 +3647,12 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>unconfirmed</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
@@ -3666,11 +3661,9 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -3682,7 +3675,6 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>102595</th>
@@ -3690,14 +3682,12 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
     </tr>
     <tr>
       <th>102596</th>
       <td>unconfirmed</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
@@ -3706,7 +3696,6 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>102598</th>
@@ -3714,11 +3703,10 @@ The scaled values will replace the original column (<code class="docutils litera
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>102599 rows × 5 columns</p>
+<p>102599 rows × 4 columns</p>
 </div></div></div>
 </div>
 </section>
