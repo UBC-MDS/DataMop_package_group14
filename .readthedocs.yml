@@ -20,12 +20,8 @@ build:
     post_install:
       # Install dependencies with 'docs' dependency group
       # https://python-poetry.org/docs/managing-dependencies/#dependency-groups
-      - pip install myst-nb
-      - pip install autoapi
-      - pip install autoapi.extension
-      - pip install sphinx.ext.napoleon
-      - pip install sphinx.ext.viewcode
-      - poetry install
+
+      - poetry install --with docs
       
       
 # Build documentation in the "docs/" directory with Sphinx
