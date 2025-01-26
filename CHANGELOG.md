@@ -2,8 +2,6 @@
 
 <!--next-version-placeholder-->
 
-# Changelog
-
 ## v1.1.0 (2025-01-25)
 ### Added
 - Created HTML documentation for the project. ([8ddbf7](https://github.com/UBC-MDS/DataMop_package_group14/commit/8ddbf74e935594f564fe3ac61349c674ab83493d))
