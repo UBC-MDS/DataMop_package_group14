@@ -1,8 +1,17 @@
 # datamop
 
-[![Documentation Status](https://readthedocs.org/projects/datamop/badge/?version=latest)](https://datamop.readthedocs.io/en/latest/)[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-360/)[![codecov](https://codecov.io/gh/UBC-MDS/DataMop_package_group14/graph/badge.svg?token=F32xo7rWCj)](https://codecov.io/gh/UBC-MDS/DataMop_package_group14)[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)![version](https://img.shields.io/github/v/release/UBC-MDS/DataMop_package_group14)
+[![Documentation Status](https://readthedocs.org/projects/datamop/badge/?version=latest)](https://datamop.readthedocs.io/en/latest/)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![codecov](https://codecov.io/gh/UBC-MDS/DataMop_package_group14/graph/badge.svg?token=F32xo7rWCj)](https://codecov.io/gh/UBC-MDS/DataMop_package_group14)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![version](https://img.shields.io/github/v/release/UBC-MDS/DataMop_package_group14)
 
 `datamop` is a data cleaning and wrangling python package designed to streamline the preprocessing of datasets. Whether you meet missing values, inconsistent categorical columns or need scaling for numeric columns when dealing with data. `datamop` provides a simple and consistent solution to automate and simplify these repetitive tasks. 
+
+## Documentation
+
+The full documentation including package tutorial and API reference can be found on the ReadTheDocs [here](https://datamop.readthedocs.io/en/latest/)
 
 ## Functions
 
