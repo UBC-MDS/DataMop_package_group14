@@ -103,7 +103,6 @@ def column_encoder(data, columns, method='one-hot', order=None):
             if column not in columns:
                 raise ValueError(f"The column '{column}' specified in order is not in the column list")
 
-            
             custom_order = order[column]
             unique_values = encoded_df[column].unique()
             #check if order match what is inside column
