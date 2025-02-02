@@ -1,13 +1,13 @@
 import pandas as pd
 
 
-def column_encoder(df, columns, method='one-hot', order=None):
+def column_encoder(data, columns, method='one-hot', order=None):
     """
     Encodes categorical columns using one-hot or ordinal encoding based on user input.
 
     Parameters:
     -----------
-    df : pandas.DataFrame
+    data : pandas.DataFrame
         The input DataFrame containing the dataset.
     columns : list
         The name of the columns to be encoded. 
@@ -40,12 +40,12 @@ def column_encoder(df, columns, method='one-hot', order=None):
     Examples:
     ---------
     >>> import pandas as pd
-    >>> df = pd.DataFrame({
+    >>> data = pd.DataFrame({
     ...     'Sport': ['Tennis', 'Basketball', 'Football', 'Badminton'],
     ...     'Level': ['A', 'B', 'C', 'D']
     ... })
 
-    >>> encoded_df_onehot = column_encoder(df, columns=['Sport'], method='one-hot')
+    >>> encoded_df_onehot = column_encoder(data, columns=['Sport'], method='one-hot')
     >>> print(encoded_df_onehot)
       Level  Sport_Badminton  Sport_Basketball  Sport_Football  Sport_Tennis
          A                0                 0               0             1
@@ -53,7 +53,7 @@ def column_encoder(df, columns, method='one-hot', order=None):
          C                0                 0               1             0
          D                1                 0               0             0
          
-    >>> encoded_df_ordinal = column_encoder(df, columns=['Level'], method='ordinal', order={'Level': ['A', 'B', 'C', 'D']})
+    >>> encoded_df_ordinal = column_encoder(data, columns=['Level'], method='ordinal', order={'Level': ['A', 'B', 'C', 'D']})
     >>> print(encoded_df_ordinal)
             Sport  Level
            Tennis      0
@@ -63,7 +63,7 @@ def column_encoder(df, columns, method='one-hot', order=None):
 
     """
     #check input type
-    if not isinstance(df, pd.DataFrame):
+    if not isinstance(data, pd.DataFrame):
         raise TypeError("Input must be a pandas DataFrame")
     if not isinstance(columns, list) or not all(isinstance(col, str) for col in columns):
         raise TypeError("Columns parameter must be a list of strings")
@@ -71,7 +71,7 @@ def column_encoder(df, columns, method='one-hot', order=None):
         raise TypeError("Method parameter must be a string")
     if method == 'ordinal' and order is not None and not isinstance(order, dict):
         raise TypeError("Order parameter must be a dictionary")
-    encoded_df = df.copy()
+    encoded_df = data.copy()
     
     if method == 'one-hot':
         #check if order is input
