@@ -70,7 +70,6 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
         return data.copy()
     
     # Error handling
-
     if column not in data.columns:
         raise KeyError("Column not found in the DataFrame.")
     if not pd.api.types.is_numeric_dtype(data[column]):
@@ -87,7 +86,6 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
         midpoint = (new_min + new_max) / 2
         scaled_column = pd.Series([midpoint] * len(data), index=data.index)
 
-    
     # Scale the column
     else:
         # minmax scaling
