@@ -34,7 +34,8 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
     --------
     pandas.DataFrame
         A copy of the DataFrame with the scaled column replacing the original column if `inplace` is set to `True`.
-        If `inplace` is set to `False`, the copy of DataFrame is returned with the new scaled column added, keeping the original column.
+        If `inplace` is set to `False`, the copy of DataFrame is returned with the new scaled column added, 
+        keeping the original column.
 
     Raises
     ------
@@ -58,7 +59,6 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
             0.0
             0.5
             1.0
-
     """
     # Check input is pd.DataFrame
     if not isinstance(data, pd.DataFrame):
@@ -66,7 +66,10 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
     
     # Empty df warning
     if data.empty:
-        warnings.warn("Empty DataFrame detected. Empty DataFrame will be returned.", UserWarning)
+        warnings.warn(
+            "Empty DataFrame detected. Empty DataFrame will be returned.", 
+            UserWarning
+            )
         return data.copy()
     
     # Error handling
@@ -79,10 +82,17 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
     
     # Edge case warning
     if data[column].isna().any():
-        warnings.warn("NaN value detected in column '{column}'. They will be unchanged", UserWarning)
+        warnings.warn(
+            "NaN value detected in column '{column}'. They will be unchanged", 
+            UserWarning
+            )
 
     if data[column].nunique() == 1:
-        warnings.warn("Single-value column detected. All values will be scaled to the midpoint of the `new_min` and `new_max`.", UserWarning)
+        warnings.warn(
+            "Single-value column detected. "
+            "All values will be scaled to the midpoint of the `new_min` and `new_max`.",
+              UserWarning
+              )
         midpoint = (new_min + new_max) / 2
         scaled_column = pd.Series([midpoint] * len(data), index=data.index)
 
@@ -94,7 +104,11 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
                 raise ValueError("`new_min` cannot be greater than `new_max`.")
             min_value = data[column].min()
             max_value = data[column].max()
-            scaled_column = ((data[column] - min_value) / (max_value - min_value)) * (new_max - new_min) + new_min
+            scaled_column = (
+                ((data[column] - min_value) / (max_value - min_value)) 
+            * (new_max - new_min) 
+            + new_min
+            )
         # standard scaling
         elif method == "standard":
             mean_value = data[column].mean() 
