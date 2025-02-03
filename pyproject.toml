@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "datamop"
-version = "1.1.1"
+version = "1.1.2"
 description = "A package containing tools for robust data cleaning."
 authors = ["Sepehr Heydarian, Ximin Xu, Essie Zhang"]
 license = "MIT"
