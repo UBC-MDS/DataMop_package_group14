@@ -1,4 +1,4 @@
-# Formula in this function is adapted from Scikit Learn Documentation
+# Formula in this function is adapted from Scikit Learn documentation
 # https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.MinMaxScaler.html
 # https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.StandardScaler.html
 
@@ -33,8 +33,10 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
     Returns
     --------
     pandas.DataFrame
-        A copy of the DataFrame with the scaled column replacing the original column if `inplace` is set to `True`.
-        If `inplace` is set to `False`, the copy of DataFrame is returned with the new scaled column added, 
+        A copy of the DataFrame with the scaled column 
+        replacing the original column if `inplace` is set to `True`.
+        If `inplace` is set to `False`, 
+        the copy of DataFrame is returned with the new scaled column added, 
         keeping the original column.
 
     Raises
@@ -48,7 +50,6 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
         If the `method` is not `minmax` or `standard`.
         If the `new_min` value is greater or equal to the `new_max` when using `minmax` method.
     
-
     Examples
     --------
     >>> import pandas as pd
@@ -83,18 +84,27 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
     # Edge case warning
     if data[column].isna().any():
         warnings.warn(
-            "NaN value detected in column '{column}'. They will be unchanged", 
+            f"NaN value detected in column '{column}'. They will be unchanged", 
             UserWarning
             )
 
     if data[column].nunique() == 1:
-        warnings.warn(
-            "Single-value column detected. "
-            "All values will be scaled to the midpoint of the `new_min` and `new_max`.",
-              UserWarning
-              )
-        midpoint = (new_min + new_max) / 2
-        scaled_column = pd.Series([midpoint] * len(data), index=data.index)
+        if method == "minmax":
+            warnings.warn(
+                "Single-value column detected. "
+                "All values will be scaled to the midpoint of the `new_min` and `new_max`.",
+                  UserWarning
+                  )
+            midpoint = (new_min + new_max) / 2
+            scaled_column = pd.Series([midpoint] * len(data), index=data.index)
+        
+        elif method == "standard":
+            warnings.warn(
+                "Standard deviation is zero. "
+                "All values are set to 0 to prevent division by zero.",
+                UserWarning
+                ) 
+            scaled_column = pd.Series([0] * len(data), index=data.index) 
 
     # Scale the column
     else:
@@ -109,6 +119,7 @@ def column_scaler(data, column, method="minmax", new_min=0, new_max=1, inplace=T
             * (new_max - new_min) 
             + new_min
             )
+            
         # standard scaling
         elif method == "standard":
             mean_value = data[column].mean() 
