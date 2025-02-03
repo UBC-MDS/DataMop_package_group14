@@ -10,6 +10,11 @@ def one_column_df():
     return pd.DataFrame({"price": [25, 50, 75]})
 
 @pytest.fixture
+def one_column_df_float():
+    """Return DataFrame with one column of floating values. Used for testing."""
+    return pd.DataFrame({"price": [25.0, 50.0, 75.0]})
+
+@pytest.fixture
 def single_val_df():
     """Return DataFrame with one column with single repeated value. Used for testing."""
     return pd.DataFrame({"price": [10, 10, 10]})
@@ -26,8 +31,14 @@ def non_numeric_df():
 
 # Expected use case tests
 def test_minmax_scaling_default(one_column_df):
-    """Test min-max scaling with default new_min=0 and new_max=1."""
+    """Test min-max scaling with default new_min=0 and new_max=1. Use float values."""
     scaled_df = column_scaler(one_column_df, column="price", method="minmax")
+    expected = [0.0, 0.5, 1.0]
+    assert scaled_df["price"].tolist() == expected
+
+def test_minmax_scaling_default_float(one_column_df_float):
+    """Test min-max scaling with default new_min=0 and new_max=1."""
+    scaled_df = column_scaler(one_column_df_float, column="price", method="minmax")
     expected = [0.0, 0.5, 1.0]
     assert scaled_df["price"].tolist() == expected
 
@@ -58,6 +69,15 @@ def test_single_value_column_minmax(single_val_df):
     expected = [15.0, 15.0, 15.0]
     assert scaled_df["price"].tolist() == expected
 
+def test_single_value_column_standard(single_val_df):
+    """Test standard scaling with column with single repeated values to prevent division by zero."""
+    with pytest.warns(UserWarning, 
+                      match="Standard deviation is zero"):
+        scaled_df = column_scaler(single_val_df, column="price", method="standard")
+    
+    expected = [0, 0, 0]
+    assert scaled_df["price"].tolist() == expected
+
 def test_empty_dataframe(empty_df):
     """Test scaling on empty DataFrame."""
     with pytest.warns(UserWarning, match="Empty DataFrame detected"):
@@ -72,6 +92,7 @@ def test_column_with_nan():
 
     expected = [0.0, np.nan, 1.0]
     assert np.allclose(scaled_df["price"], expected, equal_nan=True)
+
 
 # Erroneous case tests
 
